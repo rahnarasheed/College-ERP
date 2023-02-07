@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="paper_model_action" model="ir.actions.act_window">
+            <field name="name">paper</field>
+            <field name="res_model">college.paper</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+         <record id="paper_view_tree" model="ir.ui.view">
+            <field name="name">college.paper.tree</field>
+            <field name="model">college.paper</field>
+            <field name="arch" type="xml">
+                <tree string="Channel" editable="bottom">
+                    <field name="subject_id"/>
+                    <field name="pass_mark"/>
+                    <field name="max_mark"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

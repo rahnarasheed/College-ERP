@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="promotion_model_action" model="ir.actions.act_window">
+            <field name="name">Promotion</field>
+            <field name="res_model">college.promotion</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="prom_view1_form" model="ir.ui.view">
+            <field name="name">college.promotion.form</field>
+            <field name="model">college.promotion</field>
+            <field name="arch" type="xml">
+                <form string="Channel">
+                    <header>
+                        <button name="button_generate" class="oe_highlight"  string="Generate Promotion"
+                                type="object" attrs="{'invisible':[('hide_button', '=', False)]}"/>
+                        <button name="button_promote" class="oe_highlight"  string="Promote"
+                                type="object" attrs="{'invisible':[('promote_button', '=', False)]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="pending,completed"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="hide_button" attrs="{'invisible':True}"/>
+                                <field name="promote_button" attrs="{'invisible':True}"/>
+                                <field name="exam_id"/>
+                                <field name="semester_id"/>
+                            </group>
+                            <group>
+                                <field name="class_id"/>
+                                <field name="next_class_id"/>
+                                </group>
+                        </group>
+                        <notebook>
+                            <page string="Promoted List">
+                                <field name="promotion_ids">
+                                    <tree editable="bottom">
+                                        <field name="student_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="prom_view_tree" model="ir.ui.view">
+            <field name="name">college.promotion.tree</field>
+            <field name="model">college.promotion</field>
+            <field name="arch" type="xml">
+                <tree string="Channel">
+                    <field name="exam_id"/>
+                    <field name="semester_id"/>
+                    <field name="class_id"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+
+    <menuitem id="promotion_model_menu_action" action="promotion_model_action" parent="course_menu_root"  sequence="5"/>
+</odoo>

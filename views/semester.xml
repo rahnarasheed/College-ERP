@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="sem_model_action" model="ir.actions.act_window">
+            <field name="name">Semester</field>
+            <field name="res_model">college.semester</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="sem_view1_form" model="ir.ui.view">
+            <field name="name">college.semester.form</field>
+            <field name="model">college.semester</field>
+            <field name="arch" type="xml">
+                <form string="Channel">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="no_of_semester"/>
+                            <field name="course_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Syllabus">
+                                <field name="syllabus_ids">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="maximum_mark"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sem_view_tree" model="ir.ui.view">
+            <field name="name">college.semester.tree</field>
+            <field name="model">college.semester</field>
+            <field name="arch" type="xml">
+                <tree string="Channel">
+                    <field name="name"/>
+                    <field name="no_of_semester"/>
+                    <field name="course_id"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+
+    <!--    <menuitem id="sem_first_level_menu" name="Semester"/>-->
+    <menuitem id="sem_model_menu_action" action="sem_model_action" parent="course_menu_root" sequence="2"/>
+</odoo>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+<data>
+    <record id="ir_cron_end_date_action" model="ir.cron">
+            <field name="name">State Change</field>
+            <field name="model_id" ref="model_college_exam"/>
+            <field name="code">model.expiry_check()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+    </record>
+
+
+<record id="exam_model_action" model="ir.actions.act_window">
+    <field name="name">Exam</field>
+    <field name="res_model">college.exam</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+<record id="exam_view_form" model="ir.ui.view">
+    <field name="name">college.exam.form</field>
+    <field name="model">college.exam</field>
+    <field name="arch" type="xml">
+        <form string="Channel">
+            <header>
+                    <button name="generate_mark_sheet" class="oe_highlight" string="Generate Mark sheet"
+                                type="object" attrs="{'invisible': [('hide_button', '=', False)]}"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm,complete"/>
+            </header>
+            <sheet>
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object" name="get_sheet" icon="fa-users">
+                        <field string="Mark sheet" name="mark_sheet" widget="statinfo"/>
+                    </button>
+                    <button class="oe_stat_button" type="object" name="get_student" icon="fa-users" attrs="{'invisible': [('student', '=', 0)]}">
+                        <field string="Student" name="student" widget="statinfo"/>
+                    </button>
+                </div>
+                <group>
+                <group>
+                    <field name="hide_button" attrs="{'invisible': True}"/>
+                    <field name="name"/>
+                    <field name="type"/>
+                </group>
+                <group>
+                    <field name="class_id" options="{'no_create':True}"/>
+                    <field name="semester_id" options="{'no_create':True}"/>
+                </group>
+                <group>
+                    <field name="course_id" options="{'no_create':True}"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+                </group>
+                <notebook>
+                    <page string="Papers">
+                        <field name="paper_ids"/>
+                        <!--                                        <field name="pass_mark"/>-->
+                        <!--                                        <field name="max_mark_id"/>-->
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+    <record id="exam_view_tree" model="ir.ui.view">
+            <field name="name">college.exam.tree</field>
+            <field name="model">college.exam</field>
+            <field name="arch" type="xml">
+                <tree string="Channel">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+</data>
+
+        <!--    <menuitem id="sem_first_level_menu" name="Semester"/>-->
+<menuitem id="exam_model_menu_action" action="exam_model_action" parent="course_menu_root" sequence="4"/>
+        </odoo>
+

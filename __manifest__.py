@@ -1,0 +1,26 @@
+{
+    'name': 'College ERP',
+    'version': "16.0.4.0.0",
+    'sequence': -1,
+    'installable': True,
+    'application': True,
+    'depends': ['mail', 'contacts'],
+    'data': [
+        'report/student_sheet_report.xml',
+        'security/ir.model.access.csv',
+        'data/email_template.xml',
+        'data/email_rejection.xml',
+        'views/student.xml',
+        'views/course.xml',
+        'views/admission.xml',
+        'views/subject.xml',
+        'views/semester.xml',
+        'views/class.xml',
+        'views/exam.xml',
+        'views/academic_year.xml',
+        'views/paper.xml',
+        'views/mark_sheet.xml',
+        'views/promotion.xml',
+        'wizard/mark_sheet_wizard.xml',
+    ]
+}

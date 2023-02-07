@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="year_model_action" model="ir.actions.act_window">
+            <field name="name">Academic Year</field>
+            <field name="res_model">academic.year</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+         <record id="sem_view_form" model="ir.ui.view">
+             <field name="name">academic.year.form</field>
+             <field name="model">academic.year</field>
+             <field name="arch" type="xml">
+             <form string="Channel">
+                 <sheet>
+                    <group>
+                         <field name="name"/>
+                         <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                 </sheet>
+             </form>
+             </field>
+         </record>
+    </data>
+
+<!--    <menuitem id="sem_first_level_menu" name="Semester"/>-->
+    <menuitem id="year_model_menu_action" action="year_model_action" parent="course_menu_root"/>
+</odoo>

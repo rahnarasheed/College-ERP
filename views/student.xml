@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="seq_admission" model="ir.sequence">
+            <field name="name">Admission</field>
+            <field name="code">college.student</field>
+            <field name="prefix">AN</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="student_model_action" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="res_model">college.student</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="student_view_tree" model="ir.ui.view">
+            <field name="name">college.student.tree</field>
+            <field name="model">college.student</field>
+            <field name="arch" type="xml">
+                <tree string="Channel">
+                    <field name="first_name"/>
+                    <field name="admission_no"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="semester_id"/>
+                    <field name="class_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="student_view_form" model="ir.ui.view">
+            <field name="name">college.student.form</field>
+            <field name="model">college.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                        <group>
+                            <field name="admission_no"/>
+                            <field name="first_name"/>
+                        </group>
+                        <group>
+                            <field name="semester_id"/>
+                            <field name="class_id"/>
+                        </group>
+                        </group>
+                        <notebook>
+                            <page string="Other info">
+                            <group>
+                                <field name="admission_date"/>
+                                <field name="last_name"/>
+                                <field name="father"/>
+                                <field name="mother"/>
+                                <field name="communication_address"/>
+                                <field name="same_as_ca"/>
+                                <field name="permanent_address"
+                                       attrs="{'invisible':[('same_as_ca', '=', True)]}"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                            </group>
+                            </page>
+                        </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+</data>
+
+
+<menuitem id="student_menu_root" name="College ERP"/>
+<menuitem id="student_first_level_menu" name="Students" parent="student_menu_root" action="student_model_action"/>
+        <!--    <menuitem id="student_model_menu_action"  parent="student_first_level_menu"/>-->
+
+        </odoo>

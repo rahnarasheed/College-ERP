@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<!--    <data>-->
+        <record id="email_template_admission" model="mail.template">
+            <field name="name">Admission confirm</field>
+            <field name="model_id" ref="college_erp.model_college_admission"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="email_from">{user.email}}</field>
+            <field name="email_to">{{object.email}}</field>
+            <field name="subject">Admission confirm</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p>
+                        Dear <t t-out="object.first_name"/>,
+                        <br/>
+                        <br/>
+                         Congrats....Your admission has been confirmed on <t t-out="object.admission_date"/>.And your admission number is
+                        <t t-out="object.admission_no"/>
+                        <br/>
+                    </p>
+                    Regards,
+                    <br/>
+                    <t t-out="user.name"/>
+                </div>
+            </field>
+        </record>
+<!--    </data>-->
+</odoo>

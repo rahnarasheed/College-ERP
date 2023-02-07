@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_student_mark_sheet" model="ir.actions.report">
+        <field name="name">Mark Sheet</field>
+        <field name="model">mark.sheet.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">college_erp.report_student_sheet_templates</field>
+        <field name="report_file">college_erp.report_student_sheet_templates</field>
+    </record>
+    <template id="report_student_sheet_templates">
+        <t t-call="web.html_container">
+            <!--            <t t-foreach="docs" t-as="o">-->
+            <t t-call="web.external_layout">
+<!--                <div class="page">-->
+                    <h2>
+                        <th class="text-centre">
+                            <td>
+                                <t t-esc="student_id"/>
+                            </td>
+                            <td>:</td>
+                            <td>Mark List</td>
+                        </th>
+                    </h2>
+                    <h3>
+                        <th class="text-centre">
+                            <td>
+                                <t t-esc="course_id"/>
+                            </td>
+                            <td>:</td>
+                            <td><t t-esc="academic_year"/></td>
+                        </th>
+                    </h3>
+                    <h3>
+                        <th class="text-left">
+                            <td>
+                                <t t-esc="exam_id"/>
+                            </td>
+                            <td>:</td>
+                            <td>
+                                <t t-esc="semester_id"/>
+                            </td>
+                        </th>
+                    </h3>
+                    <h3>
+                        <th class="text-left">
+                            <td>Result
+                            </td>
+                            <td>:</td>
+                            <td>
+                                <t t-esc="result"/>
+                            </td>
+                        </th>
+                    </h3>
+                <br/>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Subject</th>
+                            <th class="text-left">Mark</th>
+                            <th class="text-left">Pass Mark</th>
+                            <th class="text-left">Pass/Fail</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="query" t-as="line">
+                        <tr>
+                            <td>
+                                <span t-esc="line['subject']"/>
+                            </td>
+                            <td>
+                                <span t-esc="line['mark']"/>
+                            </td>
+                            <td>
+                                <span t-esc="line['pass_mark']"/>
+                            </td>
+                            <td>
+                                <span t-esc="line['is_pass']"/>
+                            </td>
+                        </tr>
+                        <br/>
+                    </t>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="course_model_action" model="ir.actions.act_window">
+            <field name="name">Course</field>
+            <field name="res_model">college.course</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+         <record id="course_view_form" model="ir.ui.view">
+             <field name="name">college.course.form</field>
+             <field name="model">college.course</field>
+             <field name="arch" type="xml">
+             <form string="Channel">
+                 <sheet>
+                    <group>
+                         <field name="name"/>
+                        <field name="category"/>
+                         <field name="duration"/>
+                        <field name="number_of_semester"/>
+                    </group>
+                     <notebook>
+                        <page string="Semester">
+                            <field name="course_ids"/>
+                        </page>
+                     </notebook>
+                 </sheet>
+
+             </form>
+             </field>
+         </record>
+
+    <record id="course_view_tree" model="ir.ui.view">
+        <field name="name">college.course.tree</field>
+        <field name="model">college.course</field>
+        <field name="arch" type="xml">
+            <tree string="Channel" >
+                <field name="name"/>
+                <field name="category" />
+                <field name="duration"/>
+                <field name="number_of_semester"/>
+            </tree>
+        </field>
+    </record>
+    </data>
+    <menuitem id="course_menu_root" name="Configuration" parent="student_menu_root"/>
+    <menuitem id="course_first_level_menu" name="Course" parent="course_menu_root"  action="course_model_action" sequence="1"/>
+<!--    <menuitem id="course_model_menu_action" parent="course_first_level_menu"/>-->
+
+</odoo>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="class_model_action" model="ir.actions.act_window">
+            <field name="name">Class</field>
+            <field name="res_model">college.class</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="class_view_form" model="ir.ui.view">
+            <field name="name">college.class.form</field>
+            <field name="model">college.class</field>
+            <field name="arch" type="xml">
+                <form string="Channel">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="semester_id"/>
+                                <field name="course_id"/>
+                                </group>
+                                <group>
+                                <field name="academic_year_id"/>
+                                <field name="promotion_id"/>
+                                </group>
+                        </group>
+                        <notebook>
+                            <page string="Student">
+                                <field name="student_ids">
+                                    <tree>
+                                        <field name="first_name"/>
+                                        <!--                                    <field name="course_id"/>-->
+                                        <!--                                    <field name="semester"/>-->
+                                    </tree>
+                                </field>
+                                .
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+    </data>
+
+    <!--    <menuitem id="sem_first_level_menu" name="Semester"/>-->
+    <menuitem id="class_model_menu_action" action="class_model_action" parent="course_menu_root" sequence="3"/>
+</odoo>
