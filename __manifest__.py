@@ -4,12 +4,14 @@
     'sequence': -1,
     'installable': True,
     'application': True,
-    'depends': ['mail', 'contacts'],
+    'depends': ['mail', 'contacts', 'website'],
     'data': [
         'report/student_sheet_report.xml',
+        'report/class_report.xml',
         'security/ir.model.access.csv',
         'data/email_template.xml',
         'data/email_rejection.xml',
+        'data/admission_menu.xml',
         'views/student.xml',
         'views/course.xml',
         'views/admission.xml',
@@ -21,6 +23,8 @@
         'views/paper.xml',
         'views/mark_sheet.xml',
         'views/promotion.xml',
+        'views/online_admission.xml',
+        'views/admission_success.xml',
         'wizard/mark_sheet_wizard.xml',
     ]
 }

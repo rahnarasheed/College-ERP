@@ -57,8 +57,7 @@
                 <notebook>
                     <page string="Papers">
                         <field name="paper_ids"/>
-                        <!--                                        <field name="pass_mark"/>-->
-                        <!--                                        <field name="max_mark_id"/>-->
+<!--                                              <field name="max_mark_id"/>&ndash;&gt;-->
                     </page>
                 </notebook>
             </sheet>

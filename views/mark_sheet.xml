@@ -18,6 +18,7 @@
                     <field name="course_id"/>
                     <field name="semester_id"/>
                     <field name="total_mark"/>
+                    <field name="max_mark"/>
                 </tree>
             </field>
         </record>
@@ -27,7 +28,7 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="compute" class="oe_highlight" string="Compute" type="object"/>
+                        <button name="compute_pass" class="oe_highlight" string="Compute" type="object"/>
                     </header>
                     <sheet>
                         <group>
@@ -58,6 +59,9 @@
                         </notebook>
                         <group class="oe_subtotal_footer oe_right" colspan="2" name="total_mark">
                             <field name="total_mark" colspan="2" readonly="1"/>
+                        </group>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="max_mark">
+                            <field name="max_mark" colspan="2" readonly="1"/>
                         </group>
                     </sheet>
                 </form>

@@ -1,0 +1,22 @@
+
+<odoo>
+<template id="student_form_success">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="alert alert-success">
+                            <h1>
+                                <span>
+                                    <t t-esc="student.first_name"/>
+                                     <t t-esc="student.last_name"/>
+                                </span>
+                            </h1>
+                             Your Admission request has been sent
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

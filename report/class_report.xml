@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_class_mark_sheet" model="ir.actions.report">
+        <field name="name">Mark Sheet</field>
+        <field name="model">mark.sheet.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">college_erp.report_class_sheet_templates</field>
+        <field name="report_file">college_erp.report_class_sheet_templates</field>
+    </record>
+    <template id="report_class_sheet_templates">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page" >
+                    <h4 style="text-align:center;">
+                        <t t-esc="class_id"/>
+                        <td>:</td>
+                        <td>Mark List</td>
+                    </h4>
+                    <h4 style="text-align:center;">
+                        <t t-esc="course_id"/>
+                        <td>:</td>
+                        <t t-esc="academic_year"/>
+                    </h4>
+                </div>
+                <h4>
+                    <th class="text-left">
+                        <td>
+                            <t t-esc="exam_type"/>
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <t t-esc="semester_id"/>
+                        </td>
+                    </th>
+                </h4>
+                <h4>
+                    <th class="text-left">
+                        <td>Total</td>
+                        <td>:</td>
+                        <td>
+                            <t t-esc="student_count"/>
+                        </td>
+                    </th>
+                </h4>
+                <h4>
+                    <th class="text-left">
+                        <td>
+                            Pass
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <t t-esc="pass_count"/>
+                        </td>
+                    </th>
+                </h4>
+                <h4>
+                    <th class="text-left">
+                        <td>
+                            Fail
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <t t-esc="fail_count"/>
+                        </td>
+                    </th>
+                </h4>
+                <h4>
+                    <th class="text-left">
+                        <td>
+                            Ratio
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <t t-esc="pass_count"/>
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <t t-esc="fail_count"/>
+                        </td>
+                    </th>
+                </h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-left">Name</th>
+                            <t t-foreach="subject" t-as="lines">
+                                <th>
+                                    <t t-esc="lines"/>
+                                </th>
+                            </t>
+                            <th class="text-left">Obtained Mark</th>
+                            <th class="text-left">Total Mark</th>
+                            <th class="text-left">Pass/Fail</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="mark_lines" t-as="line">
+                        <tr>
+                            <td>
+                                <span t-esc="mark_lines[line]['name']"/>
+                            </td>
+                            <t t-foreach="subject" t-as="paper">
+                                <td>
+                                    <span t-esc="mark_lines[line][paper]"/>
+                                </td>
+                            </t>
+                            <td>
+                                <span t-esc="mark_lines[line]['total_mark']"/>
+                            </td>
+                            <td>
+                                <span t-esc="mark_lines[line]['max']"/>
+                            </td>
+                            <td>
+                                <t t-if="mark_lines[line]['pass_fail']">Pass</t>
+                                <t t-else="">Fail</t>
+                            </td>
+                            <br/>
+                        </tr>
+                    </t>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

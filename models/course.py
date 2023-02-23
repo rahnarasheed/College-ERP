@@ -1,5 +1,4 @@
 from odoo import models, fields
-# from odoo.tools.safe_eval import datetime
 
 
 class Course(models.Model):

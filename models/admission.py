@@ -26,7 +26,7 @@ class Admission(models.Model):
         selection=[('under_graduation', 'UnderGraduation'), ('post_graduation', 'PostGraduation'),
                    ('diploma', 'Diploma')], string='Previous Education')
     educational_institute = fields.Text(string="Educational Institute")
-    transfer_certificate = fields.Binary(string='Transfer Certificate', Required=True)
+    transfer_certificate = fields.Binary(string='Transfer Certificate', required=True)
     state = fields.Selection(
         selection=[('draft', 'Draft'), ('application', 'Application'),
                    ('approved', 'Approved'), ('done', 'done'),

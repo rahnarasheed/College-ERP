@@ -5,7 +5,7 @@
             <field name="name">Admission confirm</field>
             <field name="model_id" ref="college_erp.model_college_admission"/>
             <field name="auto_delete" eval="True"/>
-            <field name="email_from">{user.email}}</field>
+            <field name="email_from">{{user.email}}</field>
             <field name="email_to">{{object.email}}</field>
             <field name="subject">Rejection</field>
             <field name="body_html" type="html">

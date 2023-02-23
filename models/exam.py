@@ -33,9 +33,9 @@ class Exam(models.Model):
                 record.name = False
 
     @api.onchange('type')
-    def subject(self):
+    def onchange_type(self):
         if self.type == 'semester' and self.semester_id:
-            self.write({'paper_ids': [(5, 0)]})
+            self.paper_ids.unlink()
             for rec in self.semester_id.syllabus_ids:
                 self.env['college.paper'].create({
                     'subject_id': rec.id,
@@ -46,10 +46,10 @@ class Exam(models.Model):
     def generate_mark_sheet(self):
         self.write({'hide_button': False})
         # print(self.read(), "abc")
-        print(self.class_id.id, "self")
-        print(self.env['college.class'].browse(self.class_id.id), "selllf")
-        students = self.env['college.student'].browse(self.class_id.id)
-        print(students, "abvvva")
+        # print(self.class_id.id, "self")
+        # print(self.env['college.class'].browse(self.class_id.id), "selllf")
+        # students = self.env['college.student'].browse(self.class_id.id)
+        # print(students, "abvvva")
         for data in self.class_id.student_ids:
             self.env['college.sheet'].create({
                 'exam_id': self.id,
@@ -109,19 +109,3 @@ class Exam(models.Model):
             if i.end_date:
                 if i.end_date < today:
                     i.write({'state': 'complete'})
-
-
-
-  # @api.onchange('type')
-  #   def subject(self):
-  #       if self.type == 'semester' and self.semester_id:
-  #           sub = self.env['college.semester']\
-  #               .search([('id', '=', self.semester_id.id)])
-  #           print(self.semester_id,sub,"ahhh")
-  #           paper = self.env['college.paper']
-  #           for rec in sub.syllabus_ids:
-  #               paper.create({
-  #                   'subject_id': rec.id,
-  #                   'max_mark': rec.maximum_mark,
-  #                   'exam_id': self.id
-  #               })

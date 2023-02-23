@@ -9,48 +9,44 @@
     </record>
     <template id="report_student_sheet_templates">
         <t t-call="web.html_container">
-            <!--            <t t-foreach="docs" t-as="o">-->
             <t t-call="web.external_layout">
-<!--                <div class="page">-->
-                    <h2>
-                        <th class="text-centre">
-                            <td>
-                                <t t-esc="student_id"/>
-                            </td>
-                            <td>:</td>
-                            <td>Mark List</td>
-                        </th>
-                    </h2>
-                    <h3>
-                        <th class="text-centre">
-                            <td>
-                                <t t-esc="course_id"/>
-                            </td>
-                            <td>:</td>
-                            <td><t t-esc="academic_year"/></td>
-                        </th>
-                    </h3>
-                    <h3>
-                        <th class="text-left">
-                            <td>
-                                <t t-esc="exam_id"/>
-                            </td>
-                            <td>:</td>
-                            <td>
-                                <t t-esc="semester_id"/>
-                            </td>
-                        </th>
-                    </h3>
-                    <h3>
-                        <th class="text-left">
-                            <td>Result
-                            </td>
-                            <td>:</td>
-                            <td>
-                                <t t-esc="result"/>
-                            </td>
-                        </th>
-                    </h3>
+                <h4 style="text-align:center;">
+                        <td>
+                            <t t-esc="student_id"/>
+                        </td>
+                        <td>:</td>
+                        <td>Mark List</td>
+                </h4>
+                <h4 style="text-align:center;">
+                        <td>
+                            <t t-esc="course_id"/>
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <t t-esc="academic_year"/>
+                        </td>
+                </h4>
+                <h4>
+                    <th class="text-left">
+                        <td>
+                            <t t-esc="exam_type"/>
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <t t-esc="semester_id"/>
+                        </td>
+                    </th>
+                </h4>
+                <h4>
+                    <th class="text-left">
+                        <td>Result
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <t t-esc="result"/>
+                        </td>
+                    </th>
+                </h4>
                 <br/>
                 <table class="table table-bordered">
                     <thead>
@@ -64,7 +60,7 @@
                     <t t-foreach="query" t-as="line">
                         <tr>
                             <td>
-                                <span t-esc="line['subject']"/>
+                                <span t-esc="line['name']"/>
                             </td>
                             <td>
                                 <span t-esc="line['mark']"/>
@@ -73,7 +69,8 @@
                                 <span t-esc="line['pass_mark']"/>
                             </td>
                             <td>
-                                <span t-esc="line['is_pass']"/>
+                                <t t-if="line['pass_fail']">Pass</t>
+                                <t t-else="">Fail</t>
                             </td>
                         </tr>
                         <br/>

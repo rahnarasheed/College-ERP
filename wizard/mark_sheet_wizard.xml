@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
-    <record id="report_view_form" model="ir.ui.view">
-        <field name="model">mark.sheet.wizard</field>
-        <field name="arch" type="xml">
-            <form string="Channel">
-                <group class="oe_title">
-                    <field name="report" widget ="radio"/>
-                    <field name="student_id" attrs="{'invisible':[('report', '=', 'class_wise')]}"/>
-                    <field name="class_id" attrs="{'invisible':[('report', '=', 'student_wise')]}"/>
-                    <field name="semester_id"/>
-                    <field name="exam_id"/>
-                </group>
-                <footer>
-                    <button name="button_report" string="Print PDF" type="object" class="btn-primary"/>
-                    <button string="Cancel" class="btn-secondary" special="cancel"/>
-                </footer>
-            </form>
-        </field>
-    </record>
-    <record id="print_report_action" model="ir.actions.act_window">
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">mark.sheet.wizard</field>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="report_view_form"/>
-        <field name="target">new</field>
-    </record>
+        <record id="report_view_form" model="ir.ui.view">
+            <field name="model">mark.sheet.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Channel">
+                    <group class="oe_title">
+                        <field name="report" widget="radio"/>
+                        <field name="student_id" attrs="{'invisible':[('report', '=', 'class_wise')]}" options="{'no_create':True}"/>
+                        <field name="class_id" attrs="{'invisible':[('report', '=', 'student_wise')]}" options="{'no_create':True}"/>
+                        <field name="semester_id" options="{'no_create':True}"/>
+                        <field name="exam_type" options="{'no_create':True}"/>
+                    </group>
+                    <footer>
+                        <button name="button_report" string="Print PDF" type="object" class="btn-primary"/>
+                        <button name="button_xlsx" string="Print XLSX" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="print_report_action" model="ir.actions.act_window">
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mark.sheet.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="report_view_form"/>
+            <field name="target">new</field>
+        </record>
     </data>
- <menuitem id="report_menu_root" name="Report" parent="student_menu_root"/>
-    <menuitem id="report_first_level_menu" name="Student Mark sheet" parent="report_menu_root"  action="print_report_action" sequence="1"/>
+    <menuitem id="report_menu_root" name="Report" parent="student_menu_root"/>
+    <menuitem id="report_first_level_menu" name="Student Mark sheet" parent="report_menu_root"
+              action="print_report_action" sequence="1"/>
 </odoo>
